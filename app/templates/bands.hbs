@@ -1,0 +1,30 @@
+{{page-title "Bands"}}
+    <div class="w-128">
+    {{#each this.model as |band|}}
+        <div class="flex justify-between">
+            <div>
+                <LinkTo @route="bands.band.songs" @model="{{band.id}}">{{band.name}} </LinkTo>
+            </div>
+        </div>
+    {{/each}}
+
+
+    {{#if this.isAddingBand}}
+    <form class="flex mt-2" {{on 'submit' this.addBand}} {{on 'reset' this.cancelBand}}>
+        {{!-- template-lint-disable require-input-label --}}
+        <Input @type="text" @value={{this.band.name}} placeholder="Nouveau groupe"/>
+        <button class="btnPrimary ml-4" type="submit" disabled={{this.isAddButtonDisabled}} >Ajouter</button>
+        <button class="btnSecondary ml-4" type="reset">Annuler</button>
+    </form>
+    {{else}}
+    <button class="btnIcon" type="button" {{on 'click' this.addingBand}} >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+      Ajouter un nouveau groupe
+    </button>
+    {{/if}}
+</div>
+<div class="flex w-full">
+    {{outlet}}
+</div>

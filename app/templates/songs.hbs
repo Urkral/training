@@ -1,0 +1,14 @@
+{{page-title "Songs"}}
+<div class="w-96">
+    {{#each this.model as |song|}}
+    <div class="flex justify-between">
+        <div>
+            {{song.title}} <span class="text-teal-200 text-sm"> by {{song.band.name}}</span>
+        </div>
+        <div class="flex">
+            <StarRating @rating={{song.rating}} @song={{song}} />
+        </div>
+    </div>
+    {{/each}}
+    
+</div>

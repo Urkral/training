@@ -1,0 +1,40 @@
+{{page-title "Songs"}}
+<div class="w-96">
+    <h2>Les musiques de <span class="text-blue-500">{{this.model.name}} </span>:</h2>
+           
+    {{#each this.model.songs as |song|}}
+    <div class="flex justify-between">
+        <div>
+            {{song.title}}
+        </div>  
+        <div class="flex">
+            <StarRating @rating={{song.rating}} @song={{song}}>
+                <button type="button" {{on 'click' (fn this.setMaxRating song)}} >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-4 fill-current text-yellow-300 mx-1">
+        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+</svg>
+                </button>
+            </StarRating>
+        </div> 
+    </div>
+    {{/each}}
+
+    {{#if this.isAddingSong}}
+    <form class="flex mt-2" {{on 'submit' this.addSong}} {{on 'reset' this.cancelSong}}>
+        {{!-- template-lint-disable require-input-label --}}
+        <Input @type="text" @value={{this.song.title}} placeholder="Nouveau son"/>
+        <Input @type="text" @value={{this.song.rating}} placeholder="Note du son" class="ml-8"/>
+        <button class="btnPrimary ml-4" type="submit" disabled={{this.isAddButtonDisabled}}>Ajouter</button>
+        <button class="btnSecondary ml-4" type="reset">Annuler</button>
+    </form>
+    {{else}}
+    <button class="btnIcon" type="button" {{on 'click' this.addingSong}} >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+        <path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+      </svg>
+      Ajouter un nouveau son
+    </button>
+    {{/if}}
+     
+</div>
+

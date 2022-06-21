@@ -1,7 +1,13 @@
+
 {{page-title "Training"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<h1 class="mx-10 py-4 border-b-2 border-white">EmberJs training <small class="text-sm">With <span class="text-blue-400">TRIPTYK</span></small></h1>
 
-{{outlet}}
+<div class="flex mx-10 mt-4">
+    <LinkTo @route="songs" @activeClass="border-b-2 border-teal-600" class="pb-1">Songs</LinkTo>
+    <LinkTo @route="bands" @activeClass="border-b-2 border-teal-600" class="pb-1 ml-6">Bands</LinkTo>
+</div>
+
+<div class="flex mx-10 mt-4">
+    {{outlet}}
+</div>
