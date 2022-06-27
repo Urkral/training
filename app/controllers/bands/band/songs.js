@@ -46,4 +46,13 @@ export default class BandsBandSongsController extends Controller {
     song.set('rating', 10);
     song.save();
   }
+
+  @action
+  setRating(rating, song) {
+    console.log('Action du controller');
+    console.log(rating, song);
+
+    song.set('rating', rating);
+    song.save();
+  }
 }

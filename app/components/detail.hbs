@@ -1,0 +1,15 @@
+{{#if this.isEdit}}
+<div class="border border-white p-8">
+    <div >
+        {{@description}}
+    </div>
+    <button type="button" class="btnPrimary mt-2" {{on 'click' this.isEditDetail}} >Modifier</button>
+</div>
+{{else}}
+<form action="" class="flex flex-col">
+{{!-- template-lint-disable require-input-label --}}
+<Textarea class="h-16 text-black" @value={{@description}} />
+<button type="button" class="btnPrimary mt-2" {{on 'click' this.saveDetail}} >Enregistrer</button>
+</form>
+
+{{/if}}

@@ -1,14 +1,18 @@
 {{page-title "Songs"}}
-<div class="w-96">
-    {{#each this.model as |song|}}
-    <div class="flex justify-between">
-        <div>
-            {{song.title}} <span class="text-teal-200 text-sm"> by {{song.band.name}}</span>
-        </div>
-        <div class="flex">
-            <StarRating @rating={{song.rating}} @song={{song}} />
-        </div>
+<div class="w-128">
+  {{#each this.model as |song|}}
+    <div class="flex justify-between mb-2">
+      <div class="flex items-center">
+        <button type="button" class="mr-8" {{on "click" (fn this.deleteSong song)}}>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+        {{song.title}} <span class="text-teal-200 text-sm ml-1">by {{song.band.name}}</span>
+      </div>
+      <div class="flex">
+        <StarRating @rating={{song.rating}} @song={{song}} />
+      </div>
     </div>
-    {{/each}}
-    
+  {{/each}}
 </div>
